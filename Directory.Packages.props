@@ -1,0 +1,39 @@
+<Project>
+  <ItemGroup Label="Global Packages">
+    <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.406" />
+  </ItemGroup>
+
+  <ItemGroup Label="Main App Packages">
+    <PackageVersion Include="Autofac" Version="7.0.0" />
+    <PackageVersion Include="MaterialDesignThemes" Version="4.9.0" />
+    <PackageVersion Include="MaterialDesignColors" Version="2.1.4" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Label="Main App Logging">
+    <PackageVersion Include="AWS.Logger.SeriLog" Version="3.1.1" />
+    <PackageVersion Include="Serilog" Version="2.10.0" />
+    <PackageVersion Include="Serilog.Extensions.Logging" Version="3.1.0" />
+    <PackageVersion Include="Serilog.Extensions.Autofac.DependencyInjection" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Label="Main App Config">
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.CommandLine" Version="6.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Label="Common Microsoft Dependencies">
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Label="Test Packages">
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+    <PackageVersion Include="xunit" Version="2.4.1" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.4.3" />
+    <PackageVersion Include="Moq" Version="4.16.1" />
+    <PackageVersion Include="Microsoft.CodeCoverage" Version="17.0.0" />
+  </ItemGroup>
+</Project>

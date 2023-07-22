@@ -1,0 +1,74 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Deterministic>true</Deterministic>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <Nullable>disable</Nullable>
+    <NoWarn>NETSDK1182</NoWarn>
+  </PropertyGroup>
+  
+  <PropertyGroup Label="Global Build Paths">
+    <BuildPropsFile>Directory.Build.props</BuildPropsFile>
+    <SolutionRootPath>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), '$(BuildPropsFile)'))</SolutionRootPath>
+    <BinariesDirectoryPath>$(SolutionRootPath)bin\</BinariesDirectoryPath>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Project Purpose">
+    <IsTestProject Condition="$(MSBuildProjectName.EndsWith('Tests'))">true</IsTestProject>
+    <IsArtifactProject Condition="'$(IsTestProject)'==''">true</IsArtifactProject>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Output ant Temp directories override">
+    <ArtifactsPath Condition="'$(IsArtifactProject)'=='true'">$(BinariesDirectoryPath)artifacts\$(Configuration)</ArtifactsPath>
+    <ArtifactsPath Condition="'$(IsTestProject)'=='true'">$(BinariesDirectoryPath)tests\$(MSBuildProjectName)\$(Configuration)</ArtifactsPath>
+
+    <TemporaryArtifactsPath>$(BinariesDirectoryPath)temp\$(MSBuildProjectName)\$(Configuration)</TemporaryArtifactsPath>
+
+    <DocumentationArtifactsFile Condition="'$(IsArtifactProject)'=='true'">$(BinariesDirectoryPath)doc\xml\$(Configuration)\$(MSBuildProjectName).xml</DocumentationArtifactsFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>$(ArtifactsPath)</OutputPath>
+    <IntermediateOutputPath>$(TemporaryArtifactsPath)</IntermediateOutputPath>
+    <BaseIntermediateOutputPath>$(TemporaryArtifactsPath)</BaseIntermediateOutputPath>
+    <DocumentationFile>$(DocumentationArtifactsFile)</DocumentationFile>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>$(ArtifactsPath)</OutputPath>
+    <IntermediateOutputPath>$(TemporaryArtifactsPath)</IntermediateOutputPath>
+    <BaseIntermediateOutputPath>$(TemporaryArtifactsPath)</BaseIntermediateOutputPath>
+    <DocumentationFile>$(DocumentationArtifactsFile)</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Documentation file generation">
+    <GenerateDocumentationFile Condition="'$(IsArtifactProject)'=='true' ">true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Label="StyleCop Paths">
+    <StyleCopLinkPath>$([System.IO.Path]::Combine($(MSBuildProjectDirectory), 'stylecop.json'))</StyleCopLinkPath>
+    <StyleCopRelativeToSolution>$(StyleCopLinkPath.Replace('$(SolutionRootPath)', ''))</StyleCopRelativeToSolution>
+    <StyleCopRelativePath>$([System.Text.RegularExpressions.Regex]::Replace('$(StyleCopRelativeToSolution)', '[a-zA-Z0-9\.\{\},]+\\', '..\'))</StyleCopRelativePath>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Code Analysis dictionaries">
+    <GlobalCodeAnalysisDictionaryPath>$([System.IO.Path]::Combine($(MSBuildProjectDirectory), 'Dictionary.xml'))</GlobalCodeAnalysisDictionaryPath>
+    <GlobalCodeAnalysisDictionaryRelativeToSolution>$(GlobalCodeAnalysisDictionaryPath.Replace('$(SolutionRootPath)', ''))</GlobalCodeAnalysisDictionaryRelativeToSolution>
+    <GlobalCodeAnalysisDictionaryRelativePath>$([System.Text.RegularExpressions.Regex]::Replace('$(GlobalCodeAnalysisDictionaryRelativeToSolution)', '[a-zA-Z0-9\.\{\},]+\\', '..\'))</GlobalCodeAnalysisDictionaryRelativePath>
+    <AdditionalFileItemNames>$(AdditionalFileItemNames);CodeAnalysisDictionary</AdditionalFileItemNames>
+  </PropertyGroup>
+  
+  <ItemGroup Label="StyleCop Package and Configuration Items">
+    <AdditionalFiles Include="$(StyleCopRelativePath)" Link="stylecop.json" />
+    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="$(GlobalCodeAnalysisDictionaryRelativePath)" Link="Properties\Dictionary.xml" />
+  </ItemGroup>
+
+</Project>
