@@ -12,7 +12,7 @@
                 </ResourceDictionary>
                 
                 <ResourceDictionary Source="Resources/Styles.xaml"/>
-                <md:BundledTheme BaseTheme="Dark" PrimaryColor="BlueGrey" SecondaryColor="LightBlue"/>
+                <md:BundledTheme BaseTheme="Dark" PrimaryColor="BlueGrey" SecondaryColor="LightBlue" ColorAdjustment="{md:ColorAdjustment}" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

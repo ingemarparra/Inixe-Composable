@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:Inixe.Composable.App.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:cmd="clr-namespace:Inixe.Composable.App.Commands"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
@@ -106,10 +107,10 @@
 
             <Grid Grid.Row="0" Height="Auto">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-                    <Button Style="{StaticResource MinimizeButtonStyle}" />
-                    <Button Style="{StaticResource RestoreButtonStyle}" x:Name="RestoreButton"/>
-                    <Button Style="{StaticResource MaximizeButtonStyle}" x:Name="MaximizeButton"/>
-                    <Button Style="{StaticResource CloseButtonStyle}" />
+                    <Button Style="{StaticResource MinimizeButtonStyle}" Command="{x:Static cmd:MinimizeWindowCommand.Command}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
+                    <Button Style="{StaticResource RestoreButtonStyle}" Command="{x:Static cmd:RestoreWindowCommand.Command}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" x:Name="RestoreButton"/>
+                    <Button Style="{StaticResource MaximizeButtonStyle}" Command="{x:Static cmd:MaximizeWindowCommand.Command}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" x:Name="MaximizeButton"/>
+                    <Button Style="{StaticResource CloseButtonStyle}" Command="{x:Static SystemCommands.CloseWindowCommand}" CommandParameter="{Binding Self}"/>
                 </StackPanel>
             </Grid>
 
