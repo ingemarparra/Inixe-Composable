@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="Inixe.Composable.App.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Inixe.Composable.App.ViewModels"
+             xmlns:fw="clr-namespace:Inixe.Composable.UI.Core;assembly=Inixe.Composable.UI.Core"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             DataContext="{Binding Source={StaticResource ViewModelFlyweightFactory}, Path=MainViewModel}"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance IsDesignTimeCreatable=False, Type={x:Type vm:MainViewModel}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" ItemsSource="{Binding MenuItems}" md:MenuAssist.TopLevelMenuItemHeight="25">
+            <Menu.ItemContainerStyle>
+                <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MaterialDesignMenuItem}">
+                    <Style.Setters>
+                        <Setter Property="CommandParameter" Value="{Binding Parameter}"/>
+                        <Setter Property="Command" Value="{Binding Command}"/>
+                        <Setter Property="IsCheckable" Value="{Binding IsCheckable}"/>
+                        <Setter Property="IsChecked" Value="{Binding IsChecked}"/>
+                        <Setter Property="InputGestureText" Value="{Binding HotKey}"/>
+                    </Style.Setters>
+                </Style>
+            </Menu.ItemContainerStyle>
+            <Menu.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=SubMenus}">
+                    <TextBlock Text="{Binding Caption}" />
+                </HierarchicalDataTemplate>
+            </Menu.ItemTemplate>
+        </Menu>
+        
+
+        <TabControl Grid.Row="1"
+                    ItemsSource="{Binding Tabs}"
+                    DisplayMemberPath="Caption"
+                    Style="{StaticResource MaterialDesignTabControl}"
+                    md:ColorZoneAssist.Mode="Standard"
+                    md:ElevationAssist.Elevation="Dp4"
+                    HorizontalContentAlignment="Center"
+                    TabStripPlacement="Bottom"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch" >
+        </TabControl>
+        <ToolBar Grid.Row="2" Height="18" ItemsSource="{Binding StatusBar}"/>
+    </Grid>
+</UserControl>

@@ -98,6 +98,7 @@
 
     <Border  Style="{StaticResource WindowBorderStyle}" >
         <Grid>
+
             <Grid.RowDefinitions>
                 <RowDefinition Height ="Auto"/>
                 <RowDefinition Height ="*"/>
@@ -111,6 +112,11 @@
                     <Button Style="{StaticResource CloseButtonStyle}" />
                 </StackPanel>
             </Grid>
+
+            <Grid Grid.Row="1">
+                <views:MainView/>
+            </Grid>
+
         </Grid>
     </Border>
 </Window>
