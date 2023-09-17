@@ -21,6 +21,11 @@ namespace Inixe.Composable.App.ViewModels
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
 
+    /// <summary>
+    /// Application Main View Model. This also acts as the implementation of <see cref="IAppHost"/>.
+    /// </summary>
+    /// <seealso cref="Inixe.Composable.UI.Core.IAppHost" />
+    /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
     public class MainViewModel : IAppHost, INotifyPropertyChanged
     {
         private readonly ObservableCollection<TabItemViewModelBase> tabs;
@@ -32,11 +37,33 @@ namespace Inixe.Composable.App.ViewModels
         private readonly PluginRegistry pluginRegistry;
         private readonly ICommand refreshPluginRegistryCommand;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainViewModel"/> class.
+        /// </summary>
+        /// <remarks>This constructor is only used by design time instances.</remarks>
         public MainViewModel()
             : this(new NullCommandFactory(), new NullConfiguration(), new NullLogger<MainViewModel>(), new PluginRegistry())
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainViewModel"/> class.
+        /// </summary>
+        /// <param name="commandFactory">The command factory.</param>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="pluginRegistry">The plugin registry.</param>
+        /// <exception cref="ArgumentNullException">When
+        /// logger
+        /// or
+        /// configuration
+        /// or
+        /// pluginRegistry
+        /// or
+        /// commandFactory
+        /// is <c>null</c>.
+        /// </exception>
+        /// <remarks>This is the actual view model constructor during runtime.</remarks>
         public MainViewModel(ICommandFactory commandFactory, IConfiguration configuration, ILogger<MainViewModel> logger, PluginRegistry pluginRegistry)
         {
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -103,10 +130,25 @@ namespace Inixe.Composable.App.ViewModels
 
         private ObservableCollection<MenuItemViewModel> CreateInitialMenus()
         {
+            this.LoadPlugins();
+
             var menus = new ObservableCollection<MenuItemViewModel>();
             menus.Add(new MainMenuItemViewModel(this.commandFactory));
+            menus.Add(new PluginsListMenuItemViewModel(this.pluginRegistry, this.commandFactory));
 
             return menus;
+        }
+
+        private void LoadPlugins()
+        {
+            if (this.RefreshPluginRegistryCommand is IAsyncCommand ac)
+            {
+                ac.ExecuteAsync(this.pluginRegistry);
+            }
+            else
+            {
+                this.RefreshPluginRegistryCommand.Execute(this.pluginRegistry);
+            }
         }
 
         private class MainMenuItemViewModel : MenuItemViewModel
