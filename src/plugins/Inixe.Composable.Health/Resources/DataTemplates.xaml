@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:Inixe.Composable.Health.Views;assembly=Inixe.Composable.Health"
+                    xmlns:vm="clr-namespace:Inixe.Composable.Health.ViewModels;assembly=Inixe.Composable.Health">
+    <DataTemplate DataType="{x:Type vm:HealthViewModel}">
+        <Grid>
+            <v:HealthView/>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>
