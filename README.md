@@ -4,7 +4,7 @@ A simple proof of concept application that implements a plug-in enabled WPF appl
 
 Even if the application depends on Autofac. It's still possible to use other IoC.
 
-The main objective is to load dynamically assemblies and insert their XAML templates in the the existing application on deman.
+The main objective is to load dynamically assemblies and insert their XAML templates in the the existing application on demand.
 
 
 
