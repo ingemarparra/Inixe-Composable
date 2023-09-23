@@ -81,3 +81,74 @@ csharp_space_between_square_brackets = false
 csharp_preserve_single_line_statements = true
 csharp_preserve_single_line_blocks = true
 csharp_using_directive_placement = inside_namespace
+
+# Configure Spell Checker
+dotnet_diagnostic.VSSpell001.severity = warning
+vsspell_cad_import_code_analysis_dictionaries = true
+
+
+
+# Visual Studio Spell Checker extension global configuration file [https://github.com/EWSoftware/VSSpellChecker]
+#
+# This file should only contain spell checker settings.  All other settings will be ignored.  Use the spell
+# checker configuration editor in Visual Studio to modify the settings.
+[*]
+# VSSPELL: Spell checker settings for all files
+
+# VSSPELL: Spell checker settings from VSSpellChecker.vsspell
+vsspell_section_id = e222e3effcbf44b9a914d619e65c83e4
+vsspell_spell_check_as_you_type = true
+vsspell_include_in_project_spell_check = true
+vsspell_detect_doubled_words = true
+vsspell_ignore_words_with_digits = true
+vsspell_ignore_words_in_all_uppercase = true
+vsspell_ignore_words_in_mixed_case = true
+vsspell_ignore_format_specifiers = true
+vsspell_ignore_filenames_and_email_addresses = true
+vsspell_ignore_xml_elements_in_text = true
+vsspell_treat_underscore_as_separator = true
+vsspell_ignore_mnemonics = true
+vsspell_ignored_character_class = None
+vsspell_determine_resource_file_language_from_name = true
+vsspell_enable_wpf_text_box_spell_checking = true
+vsspell_code_analyzer_ignore_xml_doc_comments = false
+vsspell_code_analyzer_ignore_delimited_comments = false
+vsspell_code_analyzer_ignore_standard_single_line_comments = false
+vsspell_code_analyzer_ignore_quadruple_slash_comments = false
+vsspell_code_analyzer_ignore_normal_strings = false
+vsspell_code_analyzer_ignore_verbatim_strings = false
+vsspell_code_analyzer_ignore_interpolated_strings = false
+vsspell_code_analyzer_apply_to_all_c_style_languages = false
+vsspell_cad_import_code_analysis_dictionaries = true
+vsspell_cad_recognized_word_handling = IgnoreAllWords
+vsspell_cad_treat_unrecognized_words_as_misspelled = true
+vsspell_cad_treat_deprecated_terms_as_misspelled = true
+vsspell_cad_treat_compound_terms_as_misspelled = true
+vsspell_cad_treat_casing_exceptions_as_ignored_words = false
+vsspell_ignored_words_e222e3effcbf44b9a914d619e65c83e4 = File:IgnoredWords.dic
+vsspell_ignored_xml_elements_e222e3effcbf44b9a914d619e65c83e4 = clear_inherited
+vsspell_spell_checked_xml_attributes_e222e3effcbf44b9a914d619e65c83e4 = clear_inherited
+
+
+[*.resx]
+# VSSPELL: Ignored resource file specific keywords
+vsspell_section_id = 1C663502B9244D4DB52510C55DF2AB99
+vsspell_ignored_keywords_1C663502B9244D4DB52510C55DF2AB99 = microsoft|mimetype|mscorlib|resheader|resx|utf
+
+[*.{cs}]
+# VSSPELL: Ignored C# language-specific keywords
+vsspell_section_id = 1A9CD7DD3DAB4A7DB21EDCFB6351977A
+vsspell_ignored_keywords_1A9CD7DD3DAB4A7DB21EDCFB6351977A = abstract|add|alias|and|args|as|ascending|async|await|base|bool|break|by|byte|case|catch|char|checked|class|const|continue|decimal|default|delegate|descending|do|double|dynamic|else|enum|equals|event|explicit|extern|false|file|finally|fixed|float|for|foreach|from|get|global|goto|group|if|implicit|in|init|int|interface|internal|into|is|join|let|lock|long|managed|nameof|namespace|new|nint|not|notnull|nuint|null|object|on|operator|or|orderby|out|override|params|partial|private|protected|public|readonly|record|ref|remove|required|return|sbyte|scoped|sealed|select|set|short|sizeof|stackalloc|static|string|struct|switch|this|throw|true|try|typeof|uint|ulong|unchecked|unmanaged|unsafe|ushort|using|value|var|virtual|void|volatile|when|where|while|with|yield
+
+
+[*.sql]
+# VSSPELL: Ignored SQL language-specific keywords
+vsspell_section_id = 5389845B166345E6A2E98E2F3DE8C5B1
+vsspell_ignored_keywords_5389845B166345E6A2E98E2F3DE8C5B1 = ABSOLUTE|ACTION|ADA|ADD|ADMIN|AFTER|AGGREGATE|ALIAS|ALL|ALLOCATE|ALTER|AND|ANY|ARE|ARRAY|AS|ASC|ASENSITIVE|ASSERTION|ASYMMETRIC|AT|ATOMIC|AUTHORIZATION|AVG|AVGX|AVGY|BACKUP|BEFORE|BEGIN|BETWEEN|BINARY|BIT|BLOB|BOOLEAN|BOTH|BREADTH|BREAK|BROWSE|BUCKET|BULK|BY|CALL|CALLED|CARDINALITY|CASCADE|CASCADED|CASE|CAST|CATALOG|CHAR|CHARACTER|CHECK|CHECKPOINT|CLASS|CLOB|CLOSE|CLUSTERED|COALESCE|COLLATE|COLLATION|COLLECT|COLUMN|COMMIT|COMPLETION|COMPUTE|CONDITION|CONNECT|CONNECTION|CONSTRAINT|CONSTRAINTS|CONSTRUCTOR|CONT|CONTAINS|CONTAINSTABLE|CONTINUE|CONVERT|CORR|CORRESPONDING|COUNT|COVAR|CREATE|CROSS|CUBE|CUME|CURRENT|CURSOR|CYCLE|DATA|DATABASE|DATE|DAY|DBCC|DEALLOCATE|DEC|DECIMAL|DECLARE|DEFAULT|DEFERRABLE|DEFERRED|DELETE|DENY|DEPTH|DEREF|DESC|DESCRIBE|DESCRIPTOR|DESTROY|DESTRUCTOR|DETERMINISTIC|DIAGNOSTICS|DICTIONARY|DISC|DISCONNECT|DISK|DIST|DISTINCT|DISTRIBUTED|DOMAIN|DOUBLE|DROP|DUMP|DYNAMIC|EACH|ELEMENT|ELSE|END|EQUALS|ERRLVL|ESCAPE|EVERY|EXCEPT|EXCEPTION|EXEC|EXECUTE|EXISTS|EXIT|EXTERNAL|EXTRACT|FALSE|FETCH|FILE|FILLFACTOR|FILTER|FIRST|FLOAT|FOR|FOREIGN|FORTRAN|FOUND|FREE|FREETEXT|FREETEXTTABLE|FROM|FULL|FULLTEXTTABLE|FUNCTION|FUSION|GENERAL|GET|GLOBAL|GO|GOTO|GRANT|GROUP|GROUPING|HAVING|HOLD|HOLDLOCK|HOST|HOUR|IDENTITY|IDENTITYCOL|IF|IGNORE|IMMEDIATE|IN|INCLUDE|INDEX|INDICATOR|INITIALIZE|INITIALLY|INNER|INOUT|INPUT|INSENSITIVE|INSERT|INT|INTEGER|INTERCEPT|INTERSECT|INTERSECTION|INTERVAL|INTO|IS|ISOLATION|ITERATE|JOIN|KEY|KILL|LABEL|LANGUAGE|LARGE|LAST|LATERAL|LEADING|LEFT|LENGTH|LESS|LEVEL|LIKE|LIMIT|LINENO|LN|LOAD|LOCAL|LOCALTIME|LOCALTIMESTAMP|LOCATOR|LOWER|MAP|MATCH|MAX|MEMBER|MERGE|METHOD|MIN|MINUTE|MOD|MODIFIES|MODIFY|MODULE|MONTH|MULTISET|NAMES|NATIONAL|NATURAL|NCHAR|NCLOB|NEW|NEXT|NO|NOCHECK|NONCLUSTERED|NONE|NORMALIZE|NOT|NULL|NULLIF|NUMERIC|OBJECT|OCCURRENCES|OCTET|OF|OFF|OFFSETS|OLD|ON|ONLY|OPEN|OPENDATASOURCE|OPENQUERY|OPENROWSET|OPENXML|OPERATION|OPTION|OR|ORDER|ORDINALITY|OUT|OUTER|OUTPUT|OVER|OVERLAPS|OVERLAY|PAD|PARAMETER|PARAMETERS|PARTIAL|PARTITION|PASCAL|PATH|PERCENT|PERCENTILE|PIVOT|PLAN|POP|POSITION|POSTFIX|PRECISION|PREFIX|PREORDER|PREPARE|PRESERVE|PRIMARY|PRINT|PRIOR|PRIVILEGES|PROC|PROCEDURE|PUBLIC|RAISERROR|RANGE|RANK|READ|READS|READTEXT|REAL|RECONFIGURE|RECURSIVE|REF|REFERENCES|REFERENCING|REGEX|REGR|RELATIVE|RELEASE|REPLICATION|RESTORE|RESTRICT|RESULT|RETURN|RETURNS|REVERT|REVOKE|RIGHT|ROLE|ROLLBACK|ROLLUP|ROUTINE|ROW|ROWCOUNT|ROWGUIDCOL|ROWS|RULE|SAMP|SAVE|SAVEPOINT|SCHEMA|SCOPE|SCROLL|SEARCH|SECOND|SECTION|SECURITYAUDIT|SELECT|SEMANTICKEYPHRASETABLE|SEMANTICSIMILARITYDETAILSTABLE|SEMANTICSIMILARITYTABLE|SENSITIVE|SEQUENCE|SESSION|SET|SETS|SETUSER|SHUTDOWN|SIMILAR|SIZE|SLOPE|SMALLINT|SOME|SPACE|SPECIFIC|SPECIFICTYPE|SQL|SQLCA|SQLCODE|SQLERROR|SQLEXCEPTION|SQLSTATE|SQLWARNING|START|STATE|STATEMENT|STATIC|STATISTICS|STDDEV|STRUCTURE|SUBMULTISET|SUBSTRING|SUM|SXX|SXY|SYMMETRIC|SYSTEM|SYY|TABLE|TABLESAMPLE|TEMPORARY|TERMINATE|TEXTSIZE|THAN|THEN|TIME|TIMESTAMP|TIMEZONE|TO|TOP|TRAILING|TRAN|TRANSACTION|TRANSFORM|TRANSLATE|TRANSLATION|TREAT|TRIGGER|TRIM|TRUE|TRUNCATE|TRY|TSEQUAL|TYPE|UESCAPE|UNDER|UNION|UNIQUE|UNKNOWN|UNNEST|UNPIVOT|UPDATE|UPDATETEXT|UPPER|USAGE|USE|USER|USING|VALUE|VALUES|VAR|VARCHAR|VARIABLE|VARYING|VIEW|WAITFOR|WHEN|WHENEVER|WHERE|WHILE|WIDTH|WINDOW|WITH|WITHIN|WITHOUT|WORK|WRITE|WRITETEXT|XMLAGG|XMLATTRIBUTES|XMLBINARY|XMLCAST|XMLCOMMENT|XMLCONCAT|XMLDOCUMENT|XMLELEMENT|XMLEXISTS|XMLFOREST|XMLITERATE|XMLNAMESPACES|XMLPARSE|XMLPI|XMLQUERY|XMLSERIALIZE|XMLTABLE|XMLTEXT|XMLVALIDATE|YEAR|ZONE
+
+[*.{ps,ps1}]
+# VSSPELL: Ignored PowerShell language-specific keywords
+vsspell_section_id = 5C2EC7F983864DC695FE8B3A3A583864
+vsspell_ignored_keywords_5C2EC7F983864DC695FE8B3A3A583864 = begin|break|catch|class|continue|data|define|do|dynamicparam|else|elseif|end|enum|exit|filter|finally|for|foreach|from|function|hidden|if|in|inlinescript|parallel|param|process|return|sequence|static|switch|throw|trap|try|until|using|var|while|workflow
+
+

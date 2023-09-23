@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <IsPluginProject>true</IsPluginProject>
+    <PluginName>Health</PluginName>
+    <PluginId>4F5F79CF-BE9D-4C9F-9C91-4680BA953B65</PluginId>
+    <PluginFactoryTypeName>Inixe.Composable.Health.HealthPluginProvisioner</PluginFactoryTypeName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Page Remove="Resources\DataTemplates.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Inixe.Composable.UI.Core\Inixe.Composable.UI.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\DataTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+  </ItemGroup>
+
+  <PropertyGroup Label="Output ant Temp directories override" Condition="'$(IsPluginProject)'=='true'">
+    <ArtifactsPath>$(ArtifactsPath)\plugins\$(PluginName)</ArtifactsPath>
+    <OutputPath>$(ArtifactsPath)</OutputPath>
+  </PropertyGroup>
+
+</Project>

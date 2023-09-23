@@ -1,0 +1,43 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <PropertyGroup Condition="'$(IsPluginProject)'=='true'">
+        <PluginOutputPath>$(OutputPath)\plugins\$(PluginName)</PluginOutputPath>
+    </PropertyGroup>
+
+    <Target Name="OverrideOutputPath" BeforeTargets="Build" Condition="'$(IsPluginProject)'=='true'">
+        <PropertyGroup>
+            <OutputPath>$(PluginOutputPath)</OutputPath>
+        </PropertyGroup>
+    </Target>
+
+    <Target Name="GeneratePluginManifest" AfterTargets="AfterBuild" Condition="'$(IsPluginProject)'=='true'">
+        <PropertyGroup Label="Output directory override" Condition="'$(IsPluginProject)'=='true'">
+            <ManifestfilePath>$(OutputPath)$(PluginName).manifest</ManifestfilePath>
+            <PluginSourcePath>$(OutputPath)$(AssemblyName).dll</PluginSourcePath>
+        </PropertyGroup>
+
+        <ItemGroup>
+            <PluginManifest Include="{"/>
+            <PluginManifest Include="&#x9;&quot;Id&quot;:&quot;$(PluginId)&quot;,"/>
+            <PluginManifest Include="&#x9;&quot;Name&quot;:&quot;$(PluginName)&quot;,"/>
+            <PluginManifest Include="&#x9;&quot;Description&quot;:&quot;$(PluginDescription)&quot;,"/>
+            <PluginManifest Include="&#x9;&quot;SourcePath&quot;:&quot;$(PluginSourcePath.Replace('\', '\\'))&quot;,"/>
+            <PluginManifest Include="&#x9;&quot;Properties&quot;:{},"/>
+            <PluginManifest Include="&#x9;&quot;PluginFactoryTypeName&quot;:&quot;$(PluginFactoryTypeName)&quot;,"/>
+            <PluginManifest Include="}"/>
+        </ItemGroup>
+
+        <WriteLinesToFile File="$(ManifestfilePath)" Lines="@(PluginManifest)" Overwrite="true"/>
+    </Target>
+
+    <!-- <Target Name="CopyFiles" AfterTargets="Build">
+  <ItemGroup>
+    <MyReferences Include="$(OutputPath)\..\**\*.dll" />
+    <ExistingReferences Include="@(MyReferences->'%(RootDir)%(Directory)%(Filename)%(Extension)', RecursiveDir='$(OutputPath)')"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ReferencesToCopy Include="@(MyReferences)" Exclude="@(ExistingReferences)" />
+  </ItemGroup>
+  <Copy SourceFiles="@(ReferencesToCopy)" DestinationFolder="$(OutputPath)" />
+</Target> -->
+</Project>
